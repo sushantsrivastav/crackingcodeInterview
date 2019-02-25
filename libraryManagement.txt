@@ -1,0 +1,58 @@
+##Design a library Management
+
+class ::
+
+account :
+	id
+	password
+	accountstatus
+	resetpass
+	
+member extend account :
+	date_of_membership
+	total_check_out_book
+	get_total_check_oot_book()
+	
+librarian extends account:
+	add_book_item()
+	block_member()
+	unblock_member()
+	
+book:
+	ISBN
+	title
+	authors
+	subject
+	
+bookitem extend book
+	bookitembarcode
+	borrowed_date
+	due_date
+	placed_at
+	isRefrence()
+	check(): retun is it is for refrence only
+	
+Bookreservation:
+	cratedate
+	status
+	bookitembarcode
+	memberid
+	fetchReservationDetail()
+	
+booklending:
+	createdate
+	due_date
+	return_date
+	member_id
+	bookitembarcode
+	lend_book(bookitembarcode,member_id):
+	fethlendingdetail(bookitembarcode)
+	
+Process :
+Checkout a book
+return a book
+renew a book
+reserve a book 
+
+ 
+	

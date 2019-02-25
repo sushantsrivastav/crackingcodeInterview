@@ -1,0 +1,54 @@
+Url shortner : ( Similar approach can be useed for pastebin)
+
+Questions :
+what is the length if url : 7 character
+what is the volume of traffic
+is the system is single instance or should we scale it ?
+
+API : 
+CreatetinyURL
+getLong
+
+
+Persistance Layer
+Data Capacity Mode :
+Longurl 2048bytes
+short url : 
+created at :
+expiratred at 
+
+Logic to generate 7 character url :
+base62 : this gives 62 ^7 combination
+
+approach 1 : 
+Get a random 7 charater long sequnce from [a-z,A-Z,0-9]
+''.join(random.choice(string.ascii.uppercase + string.ascii.lowercase + string.digits) for _ in range(7))
+problem : We could get a same random number , in this case we have to check the db if this is already present if so then we repeate the process. 
+This works for single host app server , but in case of multi host this may not works as the other worker node may be inserting the same in the database
+
+Approach2 : 
+Apply md5 function on the long url and and get the result in binary and the take first 43 bit and apply base62. This still have collision but it may save some space in case of two users wants to generate the tiny url for same longurl
+
+Best Approach :
+use zookeper and counter base approach. 
+The zookeeepr maintains a counter in memory
+when a node get a request to create a tiny url it contacts zookeeper and get the counter value. The node then apply base62 and generate tiny url
+The problem with this approach is if zookeeper is single point of failure.
+
+We can use range based approach
+we devide the 3.5 trillion combination in range for ech billion :
+1 - 1m
+1m - 2m
+2m - 3m
+
+1) Load balancer redirect the trffic to different node
+2) All nodes are connected to zookeeper
+3) zookeeper maintains a range of counter in memory 
+4) Application node register iteself to zookeeper and zookeeper provide a range to host and mark that as used
+5)App node use that range and pass that to base62 liberary and generate tiny url
+
+
+
+
+
+

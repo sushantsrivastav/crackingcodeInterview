@@ -1,0 +1,103 @@
+##Parking Lot 
+
+
+class vehchile
+	def __int__(self):
+		self.licenceplate = None
+		self.color = None
+	
+class car(vehchile):
+	def __init__(self):
+		selff.size = 'medium'
+	
+class motorcycle(vehchile):
+	def __init__(self):
+		self.size = 'small'
+	
+class truck(vehchile):
+	def __init__(self):
+		zelf.size = 'large'
+
+class bus(vehchile):
+	def __init__(self):
+		self.size = 'xlarge'
+	
+class spot(object):
+	def __init__(self,size):
+		self.size = size
+		
+class parkinglot(object):
+	def __init__(zipcode,small,large,medium,xlarge):
+		self.zipcode = zipcode
+		self.small = small
+		self.medium = medium
+		self.large = large
+		self.xlarge = xlarge
+		self.small_free_slots = []
+		self.medium_free_slots = []
+		self.large_free_slots = []
+		self.xlarge_free_slots = []
+		
+	def create_parking():
+		for i in range(small):
+			spot_ = spot('small')
+			small_free_slots.append(spot_)
+		for i in range(medium):
+			spot_ = spot('medium')
+			medium_free_slots.append(spot_)
+		for i in range(large):
+			spot_ = spot('large')
+			large_free_slots.append(spot_)
+		for i in range(xlarge):
+			spot_ = spot('xlarge')
+			xlarge_free_slots.append(spot_)
+	
+	def issmallfull():
+		return self.small_free_slots == []
+	
+	def ismediumfull():
+		return self.medium_free_slots == []
+	
+	def islargefull():
+		return self.large_free_slots == []
+	
+	def isxlargefull():
+		return self.xlarge_free_slots == []
+
+class parking(object):
+	def __init__():
+		self.spot_vechile_map = {}
+	
+	def park_vehcile(vehchile):
+		if vehchile.size == 'xlarge':
+			if  isxlargefull():
+				return "No space left is parking lot"
+			else:
+				spot_ = parkinglot.xlarge_free_slots.pop()
+				self.spot_vechile_map[spot_] = vehchile
+				
+		if vehchile.size == 'large':
+			if islargefull():
+				if isxlargefull():
+					return "No space left"
+				else:
+					spot_ = parkinglot.xlarge_free_slots.pop()
+					self.spot_vechile_map[spot_] = vehchile
+			else:
+				spot_ = parkinglot.large_free_slots.pop()
+				self.spot_vechile_map[spot_] = vehchile
+				
+		****same way for other vehcile size ***
+		
+	def retrive_vehcile(spot):
+		if spot.size = 'small':
+			parkinglot.small_free_slots.append(spot)
+			return self.spot_vechile_map[spot]
+		***same way for other spot size**
+		
+				
+					
+				
+			
+			
+		
